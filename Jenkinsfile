@@ -33,7 +33,7 @@ pipeline {
           steps {   
                     withKubeConfig(contextName: 'default', credentialsId: 'ddd', namespace: 'default', serverUrl: '${KUBERNETES_API_SERVER}') 
                     //sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
-                    sh("kubectl get nodes")
+                    sh 'kubectl get nodes'
           }
       }
    }
