@@ -31,7 +31,7 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {   
-                    withKubeConfig(contextName: 'default', credentialsId: 'la-gke-1', namespace: 'default', serverUrl: '${KUBERNETES_API_SERVER}') 
+                    withKubeConfig(contextName: 'default', credentialsId: 'k8s', namespace: 'default', serverUrl: '${KUBERNETES_API_SERVER}') 
                     //sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
                     sh("kubectl get nodes")
           }
