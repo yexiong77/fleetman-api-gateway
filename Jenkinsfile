@@ -31,10 +31,10 @@ pipeline {
 
       stage('Deploy to Cluster') {
           steps {   
-                    sh 'envsubst < ${WORKSPACE}/deploy.yaml'
+                    //sh 'envsubst < ${WORKSPACE}/deploy.yaml'
                     //kubernetesDeploy(kubeconfigId: 'KUBECTL_CONFIG',configs:'deploy.yaml')
-                    withKubeConfig(contextName: 'arn:aws:eks:ap-south-1:207880003428:cluster/baby-test', credentialsId: 'jenkins-deployer-credentials', namespace: 'default', serverUrl: '${KUBERNETES_API_SERVER}') 
-                    //sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
+                    //withKubeConfig(contextName: 'arn:aws:eks:ap-south-1:207880003428:cluster/baby-test', credentialsId: 'jenkins-deployer-credentials', namespace: 'default', serverUrl: '${KUBERNETES_API_SERVER}') 
+                    sh 'envsubst < ${WORKSPACE}/deploy.yaml | kubectl apply -f -'
                    // sh 'kubectl get nodes'
           }
       }
